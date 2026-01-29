@@ -25,16 +25,13 @@
         /* Enhanced responsive styles */
         @media (max-width: 640px) {
             .pyramid-stage {
-                max-width: 90vw !important;
+                max-width: 90vw;
             }
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem !important;
-            }
             .pyramid-stage {
-                padding: 1rem !important;
+                padding: 1rem;
             }
         }
         
@@ -44,7 +41,7 @@
         }
         
         /* Image responsive handling */
-        img {
+        .historical-docs img {
             max-width: 100%;
             height: auto;
         }
@@ -152,7 +149,7 @@
           ];
 
           return (
-            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
+            <div id="top" className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
               <style>{`
                 @keyframes fadeInUp {
                   from {
@@ -359,12 +356,12 @@
               )}
 
               {/* Historical Documentation Images */}
-              <div className="max-w-7xl mx-auto mt-12">
+              <div className="historical-docs max-w-7xl mx-auto mt-12 px-4">
                 <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
                   Historical Documentation
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
                     <img 
                       src="WhatsApp Image 2026-01-29 at 08.30.42.jpeg" 
                       alt="Historical Dialectical Progression Diagram 1" 
@@ -372,7 +369,7 @@
                     />
                     <p className="text-slate-300 text-sm text-center">Dialectical Progression Overview</p>
                   </div>
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
                     <img 
                       src="WhatsApp Image 2026-01-29 at 08.34.15.jpeg" 
                       alt="Historical Dialectical Progression Diagram 2" 
@@ -380,7 +377,7 @@
                     />
                     <p className="text-slate-300 text-sm text-center">Historical Stages Analysis</p>
                   </div>
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
                     <img 
                       src="WhatsApp Image 2026-01-29 at 08.34.42.jpeg" 
                       alt="Historical Dialectical Progression Diagram 3" 
@@ -392,9 +389,9 @@
               </div>
 
               {/* Index Section */}
-              <div className="max-w-7xl mx-auto mt-12 mb-8">
+              <div className="max-w-7xl mx-auto mt-12 mb-8 px-4">
                 <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-8 shadow-xl">
-                  <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
+                  <h2 id="content-index" className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
                     Content Index
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -453,9 +450,9 @@
                   {/* Footer Navigation */}
                   <div className="mt-8 pt-6 border-t border-slate-700">
                     <div className="flex flex-wrap justify-center gap-4 text-sm">
-                      <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">↑ Back to Top</a>
+                      <a href="#top" className="text-cyan-400 hover:text-cyan-300 transition-colors">↑ Back to Top</a>
                       <span className="text-slate-600">|</span>
-                      <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" className="text-slate-400 hover:text-white transition-colors" target="_blank">View on GitHub</a>
+                      <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" className="text-slate-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                       <span className="text-slate-600">|</span>
                       <span className="text-slate-500">© 2026 Historical Dialectical Progression</span>
                     </div>
