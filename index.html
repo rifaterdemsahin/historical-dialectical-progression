@@ -1,292 +1,342 @@
-import React, { useState } from 'react';
-import { Info, X } from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Dialectical Progression - Marxist Materialism</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React and ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel Standalone for JSX transformation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <!-- React Component -->
+    <script type="text/babel">
+        const { useState } = React;
+        
+        // Lucide React icons as inline SVG components
+        const Info = ({ className }) => (
+            <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+        );
 
-const MarxistMaterialismPyramid = () => {
-  const [activeStage, setActiveStage] = useState(null);
-  const [hoveredStage, setHoveredStage] = useState(null);
+        const X = ({ className }) => (
+            <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        );
 
-  const stages = [
-    {
-      id: 5,
-      name: "AI ERA",
-      conflict: "Humans vs. Automation",
-      color: "from-cyan-400 via-blue-500 to-cyan-600",
-      borderColor: "border-cyan-400",
-      description: "Emerging tensions between human labor and autonomous systems. Algorithmic control of production.",
-      production: "AI, Robotics, Algorithmic Control",
-      labor: "Automated → Human oversight",
-      property: "Data ownership, Platform capitalism",
-      width: "w-32",
-      icon: "⚡"
-    },
-    {
-      id: 4,
-      name: "CAPITALISM",
-      conflict: "Bourgeoisie vs. Proletariat",
-      color: "from-slate-500 via-blue-600 to-slate-700",
-      borderColor: "border-slate-400",
-      description: "Private ownership of means of production. Wage labor system. Capital accumulation.",
-      production: "Factories, Machinery, Capital",
-      labor: "Complex industrial division",
-      property: "Private property, Concentrated wealth",
-      width: "w-48",
-      icon: "🏭"
-    },
-    {
-      id: 3,
-      name: "FEUDALISM",
-      conflict: "Aristocracy vs. Serfs",
-      color: "from-purple-600 via-purple-700 to-indigo-800",
-      borderColor: "border-purple-400",
-      description: "Land-based economy. Hereditary aristocracy. Serfdom and manorial system.",
-      production: "Land, Guild Workshops",
-      labor: "Agricultural + Craft guilds",
-      property: "Feudal land tenure",
-      width: "w-64",
-      icon: "🏰"
-    },
-    {
-      id: 2,
-      name: "SLAVE SOCIETY",
-      conflict: "Masters vs. Slaves",
-      color: "from-red-700 via-red-800 to-red-900",
-      borderColor: "border-red-500",
-      description: "Direct ownership of human beings as property. Forced labor extraction.",
-      production: "Agricultural Tools, Workshops",
-      labor: "Forced labor specialization",
-      property: "Slave ownership, Land estates",
-      width: "w-80",
-      icon: "⛓️"
-    },
-    {
-      id: 1,
-      name: "PRIMITIVE COMMUNISM",
-      conflict: "Communal / Egalitarian Society",
-      color: "from-amber-700 via-orange-800 to-amber-900",
-      borderColor: "border-amber-600",
-      description: "Classless society. Collective ownership. Subsistence production.",
-      production: "Hunting, Gathering Tools",
-      labor: "Simple, communal work",
-      property: "Communal ownership",
-      width: "w-96",
-      icon: "🔥"
-    }
-  ];
+        const MarxistMaterialismPyramid = () => {
+          const [activeStage, setActiveStage] = useState(null);
+          const [hoveredStage, setHoveredStage] = useState(null);
 
-  const concepts = [
-    { name: "Division of Labor", stages: ["Simple communal", "Forced specialization", "Guild system", "Industrial complex", "Algorithmic automation"] },
-    { name: "Property Relations", stages: ["Communal", "Slave ownership", "Feudal tenure", "Private capital", "Data/Platform"] },
-    { name: "Means of Production", stages: ["Simple tools", "Agriculture", "Land + Guilds", "Factories", "AI Systems"] }
-  ];
+          const stages = [
+            {
+              id: 5,
+              name: "AI ERA",
+              conflict: "Humans vs. Automation",
+              color: "from-cyan-400 via-blue-500 to-cyan-600",
+              borderColor: "border-cyan-400",
+              description: "Emerging tensions between human labor and autonomous systems. Algorithmic control of production.",
+              production: "AI, Robotics, Algorithmic Control",
+              labor: "Automated → Human oversight",
+              property: "Data ownership, Platform capitalism",
+              width: "w-32",
+              icon: "⚡"
+            },
+            {
+              id: 4,
+              name: "CAPITALISM",
+              conflict: "Bourgeoisie vs. Proletariat",
+              color: "from-slate-500 via-blue-600 to-slate-700",
+              borderColor: "border-slate-400",
+              description: "Private ownership of means of production. Wage labor system. Capital accumulation.",
+              production: "Factories, Machinery, Capital",
+              labor: "Complex industrial division",
+              property: "Private property, Concentrated wealth",
+              width: "w-48",
+              icon: "🏭"
+            },
+            {
+              id: 3,
+              name: "FEUDALISM",
+              conflict: "Aristocracy vs. Serfs",
+              color: "from-purple-600 via-purple-700 to-indigo-800",
+              borderColor: "border-purple-400",
+              description: "Land-based economy. Hereditary aristocracy. Serfdom and manorial system.",
+              production: "Land, Guild Workshops",
+              labor: "Agricultural + Craft guilds",
+              property: "Feudal land tenure",
+              width: "w-64",
+              icon: "🏰"
+            },
+            {
+              id: 2,
+              name: "SLAVE SOCIETY",
+              conflict: "Masters vs. Slaves",
+              color: "from-red-700 via-red-800 to-red-900",
+              borderColor: "border-red-500",
+              description: "Direct ownership of human beings as property. Forced labor extraction.",
+              production: "Agricultural Tools, Workshops",
+              labor: "Forced labor specialization",
+              property: "Slave ownership, Land estates",
+              width: "w-80",
+              icon: "⛓️"
+            },
+            {
+              id: 1,
+              name: "PRIMITIVE COMMUNISM",
+              conflict: "Communal / Egalitarian Society",
+              color: "from-amber-700 via-orange-800 to-amber-900",
+              borderColor: "border-amber-600",
+              description: "Classless society. Collective ownership. Subsistence production.",
+              production: "Hunting, Gathering Tools",
+              labor: "Simple, communal work",
+              property: "Communal ownership",
+              width: "w-96",
+              icon: "🔥"
+            }
+          ];
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
-      {/* Header */}
-      <div className="max-w-7xl mx-auto mb-12 text-center">
-        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
-          HISTORICAL DIALECTICAL PROGRESSION
-        </h1>
-        <p className="text-slate-300 text-lg mb-2">Marxist Historical Materialism</p>
-        <p className="text-slate-400 text-sm">Click on any stage to explore • Hover to highlight</p>
-      </div>
+          const concepts = [
+            { name: "Division of Labor", stages: ["Simple communal", "Forced specialization", "Guild system", "Industrial complex", "Algorithmic automation"] },
+            { name: "Property Relations", stages: ["Communal", "Slave ownership", "Feudal tenure", "Private capital", "Data/Platform"] },
+            { name: "Means of Production", stages: ["Simple tools", "Agriculture", "Land + Guilds", "Factories", "AI Systems"] }
+          ];
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
-        {/* Pyramid Visualization */}
-        <div className="lg:col-span-2">
-          <div className="relative">
-            {/* Dialectical Spiral Background */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-              <svg width="400" height="600" viewBox="0 0 400 600">
-                <path
-                  d="M 200 550 Q 150 450 200 350 Q 250 250 200 150 Q 150 50 200 0"
-                  stroke="url(#spiralGradient)"
-                  strokeWidth="3"
-                  fill="none"
-                  strokeDasharray="5,5"
-                />
-                <defs>
-                  <linearGradient id="spiralGradient" x1="0%" y1="100%" x2="0%" y2="0%">
-                    <stop offset="0%" stopColor="#f59e0b" />
-                    <stop offset="50%" stopColor="#ef4444" />
-                    <stop offset="100%" stopColor="#06b6d4" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+          return (
+            <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
+              <style>{`
+                @keyframes fadeInUp {
+                  from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
 
-            {/* Vertical Arrow */}
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-t from-amber-600 via-red-500 to-cyan-400 opacity-30"></div>
-            
-            {/* Pyramid Stages */}
-            <div className="relative flex flex-col items-center gap-6 py-8">
-              {stages.map((stage, index) => (
-                <div key={stage.id} className="flex flex-col items-center w-full">
-                  {/* Stage Block */}
-                  <div
-                    className={`${stage.width} transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2`}
-                    onMouseEnter={() => setHoveredStage(stage.id)}
-                    onMouseLeave={() => setHoveredStage(null)}
-                    onClick={() => setActiveStage(activeStage === stage.id ? null : stage.id)}
-                    style={{
-                      animation: `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`
-                    }}
-                  >
-                    <div className={`relative bg-gradient-to-br ${stage.color} p-6 rounded-lg border-2 ${stage.borderColor} shadow-2xl ${hoveredStage === stage.id ? 'shadow-3xl ring-4 ring-white/30' : ''} ${activeStage === stage.id ? 'ring-4 ring-yellow-400' : ''}`}>
-                      <div className="text-4xl mb-2 text-center">{stage.icon}</div>
-                      <h3 className="text-xl font-bold text-white text-center mb-1">{stage.name}</h3>
-                      <p className="text-sm text-white/90 text-center font-medium">{stage.conflict}</p>
-                      
-                      {activeStage === stage.id && (
-                        <div className="mt-4 pt-4 border-t border-white/30 text-white/80 text-xs space-y-2 animate-fadeIn">
-                          <p><strong>Production:</strong> {stage.production}</p>
-                          <p><strong>Labor:</strong> {stage.labor}</p>
-                          <p><strong>Property:</strong> {stage.property}</p>
+                @keyframes fadeIn {
+                  from {
+                    opacity: 0;
+                  }
+                  to {
+                    opacity: 1;
+                  }
+                }
+
+                .animate-fadeIn {
+                  animation: fadeIn 0.3s ease-out;
+                }
+              `}</style>
+
+              {/* Header */}
+              <div className="max-w-7xl mx-auto mb-12 text-center">
+                <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
+                  HISTORICAL DIALECTICAL PROGRESSION
+                </h1>
+                <p className="text-slate-300 text-lg mb-2">Marxist Historical Materialism</p>
+                <p className="text-slate-400 text-sm">Click on any stage to explore • Hover to highlight</p>
+              </div>
+
+              <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
+                {/* Pyramid Visualization */}
+                <div className="lg:col-span-2">
+                  <div className="relative">
+                    {/* Dialectical Spiral Background */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
+                      <svg width="400" height="600" viewBox="0 0 400 600">
+                        <path
+                          d="M 200 550 Q 150 450 200 350 Q 250 250 200 150 Q 150 50 200 0"
+                          stroke="url(#spiralGradient)"
+                          strokeWidth="3"
+                          fill="none"
+                          strokeDasharray="5,5"
+                        />
+                        <defs>
+                          <linearGradient id="spiralGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                            <stop offset="0%" stopColor="#f59e0b" />
+                            <stop offset="50%" stopColor="#ef4444" />
+                            <stop offset="100%" stopColor="#06b6d4" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </div>
+
+                    {/* Vertical Arrow */}
+                    <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-t from-amber-600 via-red-500 to-cyan-400 opacity-30"></div>
+                    
+                    {/* Pyramid Stages */}
+                    <div className="relative flex flex-col items-center gap-6 py-8">
+                      {stages.map((stage, index) => (
+                        <div key={stage.id} className="flex flex-col items-center w-full">
+                          {/* Stage Block */}
+                          <div
+                            className={`${stage.width} transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2`}
+                            onMouseEnter={() => setHoveredStage(stage.id)}
+                            onMouseLeave={() => setHoveredStage(null)}
+                            onClick={() => setActiveStage(activeStage === stage.id ? null : stage.id)}
+                            style={{
+                              animation: `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`
+                            }}
+                          >
+                            <div className={`relative bg-gradient-to-br ${stage.color} p-6 rounded-lg border-2 ${stage.borderColor} shadow-2xl ${hoveredStage === stage.id ? 'shadow-3xl ring-4 ring-white/30' : ''} ${activeStage === stage.id ? 'ring-4 ring-yellow-400' : ''}`}>
+                              <div className="text-4xl mb-2 text-center">{stage.icon}</div>
+                              <h3 className="text-xl font-bold text-white text-center mb-1">{stage.name}</h3>
+                              <p className="text-sm text-white/90 text-center font-medium">{stage.conflict}</p>
+                              
+                              {activeStage === stage.id && (
+                                <div className="mt-4 pt-4 border-t border-white/30 text-white/80 text-xs space-y-2 animate-fadeIn">
+                                  <p><strong>Production:</strong> {stage.production}</p>
+                                  <p><strong>Labor:</strong> {stage.labor}</p>
+                                  <p><strong>Property:</strong> {stage.property}</p>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Class Conflict Indicator */}
+                          {index < stages.length - 1 && (
+                            <div className="my-3 flex items-center gap-3">
+                              <div className="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
+                              <div className="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg">
+                                <p className="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p>
+                              </div>
+                              <div className="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                            </div>
+                          )}
                         </div>
-                      )}
+                      ))}
+                    </div>
+
+                    {/* Dialectical Labels */}
+                    <div className="absolute right-0 top-1/4 text-right text-amber-400 text-sm font-bold space-y-32 opacity-70">
+                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">THESIS</div>
+                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">ANTITHESIS</div>
+                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">SYNTHESIS</div>
                     </div>
                   </div>
+                </div>
 
-                  {/* Class Conflict Indicator */}
-                  {index < stages.length - 1 && (
-                    <div className="my-3 flex items-center gap-3">
-                      <div className="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
-                      <div className="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg">
-                        <p className="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p>
+                {/* Side Panel - Concepts Evolution */}
+                <div className="lg:col-span-1 space-y-6">
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Info className="w-5 h-5 text-cyan-400" />
+                      <h2 className="text-xl font-bold text-white">Conceptual Evolution</h2>
+                    </div>
+                    
+                    {concepts.map((concept, idx) => (
+                      <div key={idx} className="mb-6 last:mb-0">
+                        <h3 className="text-cyan-400 font-bold mb-3 text-sm tracking-wide">{concept.name}</h3>
+                        <div className="space-y-2">
+                          {concept.stages.map((stage, stageIdx) => (
+                            <div
+                              key={stageIdx}
+                              className={`text-xs p-2 rounded ${
+                                hoveredStage === (5 - stageIdx) 
+                                  ? 'bg-white/20 text-white' 
+                                  : 'bg-slate-700/50 text-slate-300'
+                              } transition-all duration-300`}
+                            >
+                              <span className="font-mono text-slate-400 mr-2">{5 - stageIdx}.</span>
+                              {stage}
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                      <div className="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                    ))}
+                  </div>
+
+                  {/* Legend */}
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
+                    <h3 className="text-white font-bold mb-3 text-sm">Interactive Guide</h3>
+                    <ul className="space-y-2 text-xs text-slate-300">
+                      <li className="flex items-start gap-2">
+                        <span className="text-cyan-400 font-bold">→</span>
+                        <span>Click stages to view detailed information</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-purple-400 font-bold">→</span>
+                        <span>Hover to highlight related concepts</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-red-400 font-bold">→</span>
+                        <span>Each transition driven by class conflict</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-amber-400 font-bold">→</span>
+                        <span>Stages interdependent and transformative</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Detail Modal */}
+              {activeStage && (
+                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn" onClick={() => setActiveStage(null)}>
+                  <div className="bg-slate-800 rounded-2xl max-w-2xl w-full p-8 border border-slate-700 shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div className="flex justify-between items-start mb-6">
+                      <div>
+                        <h2 className="text-3xl font-bold text-white mb-2">{stages.find(s => s.id === activeStage)?.name}</h2>
+                        <p className="text-lg text-slate-300">{stages.find(s => s.id === activeStage)?.conflict}</p>
+                      </div>
+                      <button onClick={() => setActiveStage(null)} className="text-slate-400 hover:text-white transition-colors">
+                        <X className="w-6 h-6" />
+                      </button>
                     </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Dialectical Labels */}
-            <div className="absolute right-0 top-1/4 text-right text-amber-400 text-sm font-bold space-y-32 opacity-70">
-              <div className="bg-slate-900/80 px-3 py-1 rounded-l">THESIS</div>
-              <div className="bg-slate-900/80 px-3 py-1 rounded-l">ANTITHESIS</div>
-              <div className="bg-slate-900/80 px-3 py-1 rounded-l">SYNTHESIS</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Side Panel - Concepts Evolution */}
-        <div className="lg:col-span-1 space-y-6">
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
-            <div className="flex items-center gap-2 mb-4">
-              <Info className="w-5 h-5 text-cyan-400" />
-              <h2 className="text-xl font-bold text-white">Conceptual Evolution</h2>
-            </div>
-            
-            {concepts.map((concept, idx) => (
-              <div key={idx} className="mb-6 last:mb-0">
-                <h3 className="text-cyan-400 font-bold mb-3 text-sm tracking-wide">{concept.name}</h3>
-                <div className="space-y-2">
-                  {concept.stages.map((stage, stageIdx) => (
-                    <div
-                      key={stageIdx}
-                      className={`text-xs p-2 rounded ${
-                        hoveredStage === (5 - stageIdx) 
-                          ? 'bg-white/20 text-white' 
-                          : 'bg-slate-700/50 text-slate-300'
-                      } transition-all duration-300`}
-                    >
-                      <span className="font-mono text-slate-400 mr-2">{5 - stageIdx}.</span>
-                      {stage}
+                    
+                    <div className="space-y-4 text-slate-300">
+                      <p className="text-base leading-relaxed">{stages.find(s => s.id === activeStage)?.description}</p>
+                      
+                      <div className="grid grid-cols-1 gap-3 mt-6">
+                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                          <h4 className="text-cyan-400 font-bold text-sm mb-2">Means of Production</h4>
+                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.production}</p>
+                        </div>
+                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                          <h4 className="text-purple-400 font-bold text-sm mb-2">Division of Labor</h4>
+                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.labor}</p>
+                        </div>
+                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                          <h4 className="text-amber-400 font-bold text-sm mb-2">Property Relations</h4>
+                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.property}</p>
+                        </div>
+                      </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Legend */}
-          <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
-            <h3 className="text-white font-bold mb-3 text-sm">Interactive Guide</h3>
-            <ul className="space-y-2 text-xs text-slate-300">
-              <li className="flex items-start gap-2">
-                <span className="text-cyan-400 font-bold">→</span>
-                <span>Click stages to view detailed information</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-purple-400 font-bold">→</span>
-                <span>Hover to highlight related concepts</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-red-400 font-bold">→</span>
-                <span>Each transition driven by class conflict</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-amber-400 font-bold">→</span>
-                <span>Stages interdependent and transformative</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      {/* Detail Modal */}
-      {activeStage && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn" onClick={() => setActiveStage(null)}>
-          <div className="bg-slate-800 rounded-2xl max-w-2xl w-full p-8 border border-slate-700 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h2 className="text-3xl font-bold text-white mb-2">{stages.find(s => s.id === activeStage)?.name}</h2>
-                <p className="text-lg text-slate-300">{stages.find(s => s.id === activeStage)?.conflict}</p>
-              </div>
-              <button onClick={() => setActiveStage(null)} className="text-slate-400 hover:text-white transition-colors">
-                <X className="w-6 h-6" />
-              </button>
+              )}
             </div>
-            
-            <div className="space-y-4 text-slate-300">
-              <p className="text-base leading-relaxed">{stages.find(s => s.id === activeStage)?.description}</p>
-              
-              <div className="grid grid-cols-1 gap-3 mt-6">
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="text-cyan-400 font-bold text-sm mb-2">Means of Production</h4>
-                  <p className="text-sm">{stages.find(s => s.id === activeStage)?.production}</p>
-                </div>
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="text-purple-400 font-bold text-sm mb-2">Division of Labor</h4>
-                  <p className="text-sm">{stages.find(s => s.id === activeStage)?.labor}</p>
-                </div>
-                <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                  <h4 className="text-amber-400 font-bold text-sm mb-2">Property Relations</h4>
-                  <p className="text-sm">{stages.find(s => s.id === activeStage)?.property}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+          );
+        };
 
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out;
-        }
-      `}</style>
-    </div>
-  );
-};
-
-export default MarxistMaterialismPyramid;
+        // Render the component
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<MarxistMaterialismPyramid />);
+    </script>
+</body>
+</html>
