@@ -21,6 +21,33 @@
             padding: 0;
             overflow-x: hidden;
         }
+        
+        /* Enhanced responsive styles */
+        @media (max-width: 640px) {
+            .pyramid-stage {
+                max-width: 90vw !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem !important;
+            }
+            .pyramid-stage {
+                padding: 1rem !important;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Image responsive handling */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -153,15 +180,15 @@
               `}</style>
 
               {/* Header */}
-              <div className="max-w-7xl mx-auto mb-12 text-center">
-                <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
+              <div className="max-w-7xl mx-auto mb-12 text-center px-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
                   HISTORICAL DIALECTICAL PROGRESSION
                 </h1>
-                <p className="text-slate-300 text-lg mb-2">Marxist Historical Materialism</p>
-                <p className="text-slate-400 text-sm">Click on any stage to explore • Hover to highlight</p>
+                <p className="text-slate-300 text-base md:text-lg mb-2">Marxist Historical Materialism</p>
+                <p className="text-slate-400 text-xs sm:text-sm">Click on any stage to explore • Hover to highlight</p>
               </div>
 
-              <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
+              <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-12 px-4">
                 {/* Pyramid Visualization */}
                 <div className="lg:col-span-2">
                   <div className="relative">
@@ -330,6 +357,111 @@
                   </div>
                 </div>
               )}
+
+              {/* Historical Documentation Images */}
+              <div className="max-w-7xl mx-auto mt-12">
+                <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
+                  Historical Documentation
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src="WhatsApp Image 2026-01-29 at 08.30.42.jpeg" 
+                      alt="Historical Dialectical Progression Diagram 1" 
+                      className="w-full h-auto rounded-lg mb-3"
+                    />
+                    <p className="text-slate-300 text-sm text-center">Dialectical Progression Overview</p>
+                  </div>
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src="WhatsApp Image 2026-01-29 at 08.34.15.jpeg" 
+                      alt="Historical Dialectical Progression Diagram 2" 
+                      className="w-full h-auto rounded-lg mb-3"
+                    />
+                    <p className="text-slate-300 text-sm text-center">Historical Stages Analysis</p>
+                  </div>
+                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src="WhatsApp Image 2026-01-29 at 08.34.42.jpeg" 
+                      alt="Historical Dialectical Progression Diagram 3" 
+                      className="w-full h-auto rounded-lg mb-3"
+                    />
+                    <p className="text-slate-300 text-sm text-center">Class Conflict Framework</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Index Section */}
+              <div className="max-w-7xl mx-auto mt-12 mb-8">
+                <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-8 shadow-xl">
+                  <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
+                    Content Index
+                  </h2>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-xl font-bold text-cyan-400 mb-4">Historical Stages</h3>
+                      <ul className="space-y-2 text-slate-300">
+                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(5)}>
+                          <span className="text-cyan-400">⚡</span>
+                          <span>5. AI Era - Humans vs. Automation</span>
+                        </li>
+                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(4)}>
+                          <span className="text-blue-400">🏭</span>
+                          <span>4. Capitalism - Bourgeoisie vs. Proletariat</span>
+                        </li>
+                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(3)}>
+                          <span className="text-purple-400">🏰</span>
+                          <span>3. Feudalism - Aristocracy vs. Serfs</span>
+                        </li>
+                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(2)}>
+                          <span className="text-red-400">⛓️</span>
+                          <span>2. Slave Society - Masters vs. Slaves</span>
+                        </li>
+                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(1)}>
+                          <span className="text-amber-400">🔥</span>
+                          <span>1. Primitive Communism - Communal Society</span>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-purple-400 mb-4">Key Concepts</h3>
+                      <ul className="space-y-2 text-slate-300">
+                        <li className="flex items-start gap-3">
+                          <span className="text-cyan-400 font-bold">→</span>
+                          <span><strong>Division of Labor:</strong> Evolution from simple communal work to algorithmic automation</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-purple-400 font-bold">→</span>
+                          <span><strong>Property Relations:</strong> From communal ownership to data/platform capitalism</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-red-400 font-bold">→</span>
+                          <span><strong>Class Conflict:</strong> The driving force of historical change and transformation</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-amber-400 font-bold">→</span>
+                          <span><strong>Means of Production:</strong> Tools and systems that define each era</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                          <span className="text-yellow-400 font-bold">→</span>
+                          <span><strong>Dialectical Process:</strong> Thesis, antithesis, and synthesis throughout history</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  
+                  {/* Footer Navigation */}
+                  <div className="mt-8 pt-6 border-t border-slate-700">
+                    <div className="flex flex-wrap justify-center gap-4 text-sm">
+                      <a href="#" className="text-cyan-400 hover:text-cyan-300 transition-colors">↑ Back to Top</a>
+                      <span className="text-slate-600">|</span>
+                      <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" className="text-slate-400 hover:text-white transition-colors" target="_blank">View on GitHub</a>
+                      <span className="text-slate-600">|</span>
+                      <span className="text-slate-500">© 2026 Historical Dialectical Progression</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           );
         };
