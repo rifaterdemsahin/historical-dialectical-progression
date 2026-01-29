@@ -280,12 +280,12 @@
                             <div
                               key={stageIdx}
                               className={`text-xs p-2 rounded ${
-                                hoveredStage === (5 - stageIdx) 
+                                hoveredStage === (stageIdx + 1) 
                                   ? 'bg-white/20 text-white' 
                                   : 'bg-slate-700/50 text-slate-300'
                               } transition-all duration-300`}
                             >
-                              <span className="font-mono text-slate-400 mr-2">{5 - stageIdx}.</span>
+                              <span className="font-mono text-slate-400 mr-2">{stageIdx + 1}.</span>
                               {stage}
                             </div>
                           ))}
