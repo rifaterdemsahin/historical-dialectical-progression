@@ -59,11 +59,14 @@ Simply open the [live demo](https://rifaterdemsahin.github.io/historical-dialect
 
 ```
 historical-dialectical-progression/
-├── index.html              # Main application file
-├── README.md              # Project documentation
-├── WhatsApp Image 2026-01-29 at 08.30.42.jpeg
-├── WhatsApp Image 2026-01-29 at 08.34.15.jpeg
-└── WhatsApp Image 2026-01-29 at 08.34.42.jpeg
+├── index.html                                            # Main application (dialectical pyramid)
+├── ai-capitalism-and-the-left.html                       # Essay: AI, capitalism & the old left
+├── README.md                                             # Project documentation
+├── dialectical-progression-layers-overview.jpeg          # Stage layers with thesis/antithesis/synthesis
+├── dialectical-progression-stages-arrow.jpeg             # Upward arrow of the five stages
+├── dialectical-progression-class-conflict-framework.jpeg # Class conflict / means of production map
+├── gemini-ir35-multiple-contracts.jpeg                   # Evidence: AI-advised, fragmented labor
+└── gold-myth-debunked-order-of-magnitude.jpeg            # Evidence: folk-economics off by 100x
 ```
 
 ## Educational Context

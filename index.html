@@ -47,7 +47,19 @@
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-900">
+    <!-- Main Menu (shared across all pages) -->
+    <nav class="sticky top-0 z-[60] bg-slate-950/90 backdrop-blur border-b border-slate-700">
+      <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <a href="index.html" class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 font-bold tracking-tight text-lg">HDP</a>
+        <div class="flex flex-wrap items-center gap-4 text-sm">
+          <a href="index.html" class="text-cyan-400 hover:text-white transition-colors">Dialectical Progression</a>
+          <a href="ai-capitalism-and-the-left.html" class="text-slate-300 hover:text-white transition-colors">AI, Capitalism &amp; the Left</a>
+          <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-white transition-colors">GitHub</a>
+        </div>
+      </div>
+    </nav>
+
     <div id="root"></div>
     
     <!-- React Component -->
@@ -362,25 +374,25 @@
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img 
-                      src="WhatsApp Image 2026-01-29 at 08.30.42.jpeg" 
-                      alt="Historical Dialectical Progression Diagram 1" 
+                    <img
+                      src="dialectical-progression-layers-overview.jpeg"
+                      alt="Layered diagram of the five stages with Thesis, Antithesis, Synthesis spiral"
                       className="w-full h-auto rounded-lg mb-3"
                     />
                     <p className="text-slate-300 text-sm text-center">Dialectical Progression Overview</p>
                   </div>
                   <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img 
-                      src="WhatsApp Image 2026-01-29 at 08.34.15.jpeg" 
-                      alt="Historical Dialectical Progression Diagram 2" 
+                    <img
+                      src="dialectical-progression-stages-arrow.jpeg"
+                      alt="Upward arrow showing the five historical stages from Primitive Communism to the AI Era"
                       className="w-full h-auto rounded-lg mb-3"
                     />
                     <p className="text-slate-300 text-sm text-center">Historical Stages Analysis</p>
                   </div>
                   <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img 
-                      src="WhatsApp Image 2026-01-29 at 08.34.42.jpeg" 
-                      alt="Historical Dialectical Progression Diagram 3" 
+                    <img
+                      src="dialectical-progression-class-conflict-framework.jpeg"
+                      alt="Class conflict framework mapping division of labor, property relations, and means of production"
                       className="w-full h-auto rounded-lg mb-3"
                     />
                     <p className="text-slate-300 text-sm text-center">Class Conflict Framework</p>
