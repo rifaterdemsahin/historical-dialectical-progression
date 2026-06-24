@@ -4,47 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historical Dialectical Progression - Marxist Materialism</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- React and ReactDOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel Standalone for JSX transformation -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
+
+    <!-- Precompiled Tailwind CSS (production) -->
+    <link rel="stylesheet" href="styles.css">
+
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        
-        /* Enhanced responsive styles */
-        @media (max-width: 640px) {
-            .pyramid-stage {
-                max-width: 90vw;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .pyramid-stage {
-                padding: 1rem;
-            }
-        }
-        
-        /* Smooth scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Image responsive handling */
-        .historical-docs img {
-            max-width: 100%;
-            height: auto;
-        }
+        body { margin: 0; padding: 0; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        @media (max-width: 640px) { .pyramid-stage { max-width: 90vw; } }
+        @media (max-width: 768px) { .pyramid-stage { padding: 1rem; } }
+        .historical-docs img { max-width: 100%; height: auto; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .animate-fadeIn { animation: fadeIn 0.3s ease-out; }
     </style>
 </head>
 <body class="bg-slate-900">
@@ -60,424 +33,307 @@
       </div>
     </nav>
 
-    <div id="root"></div>
-    
-    <!-- React Component -->
-    <script type="text/babel">
-        const { useState } = React;
-        
-        // Lucide React icons as inline SVG components
-        const Info = ({ className }) => (
-            <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
-        );
+    <div id="top" class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
+      <!-- Header -->
+      <div class="max-w-7xl mx-auto mb-12 text-center px-4">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
+          HISTORICAL DIALECTICAL PROGRESSION
+        </h1>
+        <p class="text-slate-300 text-base md:text-lg mb-2">Marxist Historical Materialism</p>
+        <p class="text-slate-400 text-xs sm:text-sm">Click on any stage to explore • Hover to highlight</p>
+      </div>
 
-        const X = ({ className }) => (
-            <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        );
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-12 px-4">
+        <!-- Pyramid Visualization -->
+        <div class="lg:col-span-2">
+          <div class="relative">
+            <!-- Vertical Arrow -->
+            <div class="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-t from-amber-600 via-red-500 to-cyan-400 opacity-30"></div>
 
-        const MarxistMaterialismPyramid = () => {
-          const [activeStage, setActiveStage] = useState(null);
-          const [hoveredStage, setHoveredStage] = useState(null);
+            <!-- Pyramid Stages -->
+            <div class="relative flex flex-col items-center gap-6 py-8">
 
-          const stages = [
-            {
-              id: 5,
-              name: "AI ERA",
-              conflict: "Humans vs. Automation",
-              color: "from-cyan-400 via-blue-500 to-cyan-600",
-              borderColor: "border-cyan-400",
-              description: "Emerging tensions between human labor and autonomous systems. Algorithmic control of production.",
-              production: "AI, Robotics, Algorithmic Control",
-              labor: "Automated → Human oversight",
-              property: "Data ownership, Platform capitalism",
-              width: "w-32",
-              icon: "⚡"
-            },
-            {
-              id: 4,
-              name: "CAPITALISM",
-              conflict: "Bourgeoisie vs. Proletariat",
-              color: "from-slate-500 via-blue-600 to-slate-700",
-              borderColor: "border-slate-400",
-              description: "Private ownership of means of production. Wage labor system. Capital accumulation.",
-              production: "Factories, Machinery, Capital",
-              labor: "Complex industrial division",
-              property: "Private property, Concentrated wealth",
-              width: "w-48",
-              icon: "🏭"
-            },
-            {
-              id: 3,
-              name: "FEUDALISM",
-              conflict: "Aristocracy vs. Serfs",
-              color: "from-purple-600 via-purple-700 to-indigo-800",
-              borderColor: "border-purple-400",
-              description: "Land-based economy. Hereditary aristocracy. Serfdom and manorial system.",
-              production: "Land, Guild Workshops",
-              labor: "Agricultural + Craft guilds",
-              property: "Feudal land tenure",
-              width: "w-64",
-              icon: "🏰"
-            },
-            {
-              id: 2,
-              name: "SLAVE SOCIETY",
-              conflict: "Masters vs. Slaves",
-              color: "from-red-700 via-red-800 to-red-900",
-              borderColor: "border-red-500",
-              description: "Direct ownership of human beings as property. Forced labor extraction.",
-              production: "Agricultural Tools, Workshops",
-              labor: "Forced labor specialization",
-              property: "Slave ownership, Land estates",
-              width: "w-80",
-              icon: "⛓️"
-            },
-            {
-              id: 1,
-              name: "PRIMITIVE COMMUNISM",
-              conflict: "Communal / Egalitarian Society",
-              color: "from-amber-700 via-orange-800 to-amber-900",
-              borderColor: "border-amber-600",
-              description: "Classless society. Collective ownership. Subsistence production.",
-              production: "Hunting, Gathering Tools",
-              labor: "Simple, communal work",
-              property: "Communal ownership",
-              width: "w-96",
-              icon: "🔥"
-            }
-          ];
-
-          const concepts = [
-            { name: "Division of Labor", stages: ["Simple communal", "Forced specialization", "Guild system", "Industrial complex", "Algorithmic automation"] },
-            { name: "Property Relations", stages: ["Communal", "Slave ownership", "Feudal tenure", "Private capital", "Data/Platform"] },
-            { name: "Means of Production", stages: ["Simple tools", "Agriculture", "Land + Guilds", "Factories", "AI Systems"] }
-          ];
-
-          return (
-            <div id="top" className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8 font-sans overflow-x-hidden">
-              <style>{`
-                @keyframes fadeInUp {
-                  from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                  }
-                  to {
-                    opacity: 1;
-                    transform: translateY(0);
-                  }
-                }
-
-                @keyframes fadeIn {
-                  from {
-                    opacity: 0;
-                  }
-                  to {
-                    opacity: 1;
-                  }
-                }
-
-                .animate-fadeIn {
-                  animation: fadeIn 0.3s ease-out;
-                }
-              `}</style>
-
-              {/* Header */}
-              <div className="max-w-7xl mx-auto mb-12 text-center px-4">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-4 tracking-tight">
-                  HISTORICAL DIALECTICAL PROGRESSION
-                </h1>
-                <p className="text-slate-300 text-base md:text-lg mb-2">Marxist Historical Materialism</p>
-                <p className="text-slate-400 text-xs sm:text-sm">Click on any stage to explore • Hover to highlight</p>
-              </div>
-
-              <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 lg:gap-12 px-4">
-                {/* Pyramid Visualization */}
-                <div className="lg:col-span-2">
-                  <div className="relative">
-                    {/* Dialectical Spiral Background */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-                      <svg width="400" height="600" viewBox="0 0 400 600">
-                        <path
-                          d="M 200 550 Q 150 450 200 350 Q 250 250 200 150 Q 150 50 200 0"
-                          stroke="url(#spiralGradient)"
-                          strokeWidth="3"
-                          fill="none"
-                          strokeDasharray="5,5"
-                        />
-                        <defs>
-                          <linearGradient id="spiralGradient" x1="0%" y1="100%" x2="0%" y2="0%">
-                            <stop offset="0%" stopColor="#f59e0b" />
-                            <stop offset="50%" stopColor="#ef4444" />
-                            <stop offset="100%" stopColor="#06b6d4" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-
-                    {/* Vertical Arrow */}
-                    <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-t from-amber-600 via-red-500 to-cyan-400 opacity-30"></div>
-                    
-                    {/* Pyramid Stages */}
-                    <div className="relative flex flex-col items-center gap-6 py-8">
-                      {stages.map((stage, index) => (
-                        <div key={stage.id} className="flex flex-col items-center w-full">
-                          {/* Stage Block */}
-                          <div
-                            className={`${stage.width} transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2`}
-                            onMouseEnter={() => setHoveredStage(stage.id)}
-                            onMouseLeave={() => setHoveredStage(null)}
-                            onClick={() => setActiveStage(activeStage === stage.id ? null : stage.id)}
-                            style={{
-                              animation: `fadeInUp 0.8s ease-out ${index * 0.2}s backwards`
-                            }}
-                          >
-                            <div className={`relative bg-gradient-to-br ${stage.color} p-6 rounded-lg border-2 ${stage.borderColor} shadow-2xl ${hoveredStage === stage.id ? 'shadow-3xl ring-4 ring-white/30' : ''} ${activeStage === stage.id ? 'ring-4 ring-yellow-400' : ''}`}>
-                              <div className="text-4xl mb-2 text-center">{stage.icon}</div>
-                              <h3 className="text-xl font-bold text-white text-center mb-1">{stage.name}</h3>
-                              <p className="text-sm text-white/90 text-center font-medium">{stage.conflict}</p>
-                              
-                              {activeStage === stage.id && (
-                                <div className="mt-4 pt-4 border-t border-white/30 text-white/80 text-xs space-y-2 animate-fadeIn">
-                                  <p><strong>Production:</strong> {stage.production}</p>
-                                  <p><strong>Labor:</strong> {stage.labor}</p>
-                                  <p><strong>Property:</strong> {stage.property}</p>
-                                </div>
-                              )}
-                            </div>
-                          </div>
-
-                          {/* Class Conflict Indicator */}
-                          {index < stages.length - 1 && (
-                            <div className="my-3 flex items-center gap-3">
-                              <div className="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
-                              <div className="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg">
-                                <p className="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p>
-                              </div>
-                              <div className="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Dialectical Labels */}
-                    <div className="absolute right-0 top-1/4 text-right text-amber-400 text-sm font-bold space-y-32 opacity-70">
-                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">THESIS</div>
-                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">ANTITHESIS</div>
-                      <div className="bg-slate-900/80 px-3 py-1 rounded-l">SYNTHESIS</div>
-                    </div>
+              <div class="flex flex-col items-center w-full">
+                <div data-stage="5" class="stage-block w-32 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.8s ease-out 0s backwards;">
+                  <div class="stage-card relative bg-gradient-to-br from-cyan-400 via-blue-500 to-cyan-600 p-6 rounded-lg border-2 border-cyan-400 shadow-2xl">
+                    <div class="text-4xl mb-2 text-center">⚡</div>
+                    <h3 class="text-xl font-bold text-white text-center mb-1">AI ERA</h3>
+                    <p class="text-sm text-white/90 text-center font-medium">Humans vs. Automation</p>
                   </div>
                 </div>
+                <div class="my-3 flex items-center gap-3">
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
+                  <div class="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg"><p class="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p></div>
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                </div>
+              </div>
 
-                {/* Side Panel - Concepts Evolution */}
-                <div className="lg:col-span-1 space-y-6">
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Info className="w-5 h-5 text-cyan-400" />
-                      <h2 className="text-xl font-bold text-white">Conceptual Evolution</h2>
-                    </div>
-                    
-                    {concepts.map((concept, idx) => (
-                      <div key={idx} className="mb-6 last:mb-0">
-                        <h3 className="text-cyan-400 font-bold mb-3 text-sm tracking-wide">{concept.name}</h3>
-                        <div className="space-y-2">
-                          {concept.stages.map((stage, stageIdx) => (
-                            <div
-                              key={stageIdx}
-                              className={`text-xs p-2 rounded ${
-                                hoveredStage === (stageIdx + 1) 
-                                  ? 'bg-white/20 text-white' 
-                                  : 'bg-slate-700/50 text-slate-300'
-                              } transition-all duration-300`}
-                            >
-                              <span className="font-mono text-slate-400 mr-2">{stageIdx + 1}.</span>
-                              {stage}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+              <div class="flex flex-col items-center w-full">
+                <div data-stage="4" class="stage-block w-48 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.8s ease-out 0.2s backwards;">
+                  <div class="stage-card relative bg-gradient-to-br from-slate-500 via-blue-600 to-slate-700 p-6 rounded-lg border-2 border-slate-400 shadow-2xl">
+                    <div class="text-4xl mb-2 text-center">🏭</div>
+                    <h3 class="text-xl font-bold text-white text-center mb-1">CAPITALISM</h3>
+                    <p class="text-sm text-white/90 text-center font-medium">Bourgeoisie vs. Proletariat</p>
                   </div>
+                </div>
+                <div class="my-3 flex items-center gap-3">
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
+                  <div class="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg"><p class="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p></div>
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                </div>
+              </div>
 
-                  {/* Legend */}
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
-                    <h3 className="text-white font-bold mb-3 text-sm">Interactive Guide</h3>
-                    <ul className="space-y-2 text-xs text-slate-300">
-                      <li className="flex items-start gap-2">
-                        <span className="text-cyan-400 font-bold">→</span>
-                        <span>Click stages to view detailed information</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-purple-400 font-bold">→</span>
-                        <span>Hover to highlight related concepts</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-red-400 font-bold">→</span>
-                        <span>Each transition driven by class conflict</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-amber-400 font-bold">→</span>
-                        <span>Stages interdependent and transformative</span>
-                      </li>
-                    </ul>
+              <div class="flex flex-col items-center w-full">
+                <div data-stage="3" class="stage-block w-64 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.8s ease-out 0.4s backwards;">
+                  <div class="stage-card relative bg-gradient-to-br from-purple-600 via-purple-700 to-indigo-800 p-6 rounded-lg border-2 border-purple-400 shadow-2xl">
+                    <div class="text-4xl mb-2 text-center">🏰</div>
+                    <h3 class="text-xl font-bold text-white text-center mb-1">FEUDALISM</h3>
+                    <p class="text-sm text-white/90 text-center font-medium">Aristocracy vs. Serfs</p>
+                  </div>
+                </div>
+                <div class="my-3 flex items-center gap-3">
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
+                  <div class="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg"><p class="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p></div>
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-center w-full">
+                <div data-stage="2" class="stage-block w-80 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.8s ease-out 0.6s backwards;">
+                  <div class="stage-card relative bg-gradient-to-br from-red-700 via-red-800 to-red-900 p-6 rounded-lg border-2 border-red-500 shadow-2xl">
+                    <div class="text-4xl mb-2 text-center">⛓️</div>
+                    <h3 class="text-xl font-bold text-white text-center mb-1">SLAVE SOCIETY</h3>
+                    <p class="text-sm text-white/90 text-center font-medium">Masters vs. Slaves</p>
+                  </div>
+                </div>
+                <div class="my-3 flex items-center gap-3">
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-red-500 to-orange-500 animate-pulse"></div>
+                  <div class="px-4 py-2 bg-red-600/90 rounded-full border border-red-400 shadow-lg"><p class="text-white font-bold text-sm tracking-wider">CLASS CONFLICT</p></div>
+                  <div class="h-12 w-0.5 bg-gradient-to-b from-orange-500 to-red-500 animate-pulse"></div>
+                </div>
+              </div>
+
+              <div class="flex flex-col items-center w-full">
+                <div data-stage="1" class="stage-block w-96 transition-all duration-500 cursor-pointer transform hover:scale-105 hover:-translate-y-2" style="animation: fadeInUp 0.8s ease-out 0.8s backwards;">
+                  <div class="stage-card relative bg-gradient-to-br from-amber-700 via-orange-800 to-amber-900 p-6 rounded-lg border-2 border-amber-600 shadow-2xl">
+                    <div class="text-4xl mb-2 text-center">🔥</div>
+                    <h3 class="text-xl font-bold text-white text-center mb-1">PRIMITIVE COMMUNISM</h3>
+                    <p class="text-sm text-white/90 text-center font-medium">Communal / Egalitarian Society</p>
                   </div>
                 </div>
               </div>
 
-              {/* Detail Modal */}
-              {activeStage && (
-                <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn" onClick={() => setActiveStage(null)}>
-                  <div className="bg-slate-800 rounded-2xl max-w-2xl w-full p-8 border border-slate-700 shadow-2xl" onClick={(e) => e.stopPropagation()}>
-                    <div className="flex justify-between items-start mb-6">
-                      <div>
-                        <h2 className="text-3xl font-bold text-white mb-2">{stages.find(s => s.id === activeStage)?.name}</h2>
-                        <p className="text-lg text-slate-300">{stages.find(s => s.id === activeStage)?.conflict}</p>
-                      </div>
-                      <button onClick={() => setActiveStage(null)} className="text-slate-400 hover:text-white transition-colors">
-                        <X className="w-6 h-6" />
-                      </button>
-                    </div>
-                    
-                    <div className="space-y-4 text-slate-300">
-                      <p className="text-base leading-relaxed">{stages.find(s => s.id === activeStage)?.description}</p>
-                      
-                      <div className="grid grid-cols-1 gap-3 mt-6">
-                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                          <h4 className="text-cyan-400 font-bold text-sm mb-2">Means of Production</h4>
-                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.production}</p>
-                        </div>
-                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                          <h4 className="text-purple-400 font-bold text-sm mb-2">Division of Labor</h4>
-                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.labor}</p>
-                        </div>
-                        <div className="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
-                          <h4 className="text-amber-400 font-bold text-sm mb-2">Property Relations</h4>
-                          <p className="text-sm">{stages.find(s => s.id === activeStage)?.property}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+            </div>
+          </div>
+        </div>
 
-              {/* Historical Documentation Images */}
-              <div className="historical-docs max-w-7xl mx-auto mt-12 px-4">
-                <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
-                  Historical Documentation
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img
-                      src="dialectical-progression-layers-overview.jpeg"
-                      alt="Layered diagram of the five stages with Thesis, Antithesis, Synthesis spiral"
-                      className="w-full h-auto rounded-lg mb-3"
-                    />
-                    <p className="text-slate-300 text-sm text-center">Dialectical Progression Overview</p>
-                  </div>
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img
-                      src="dialectical-progression-stages-arrow.jpeg"
-                      alt="Upward arrow showing the five historical stages from Primitive Communism to the AI Era"
-                      className="w-full h-auto rounded-lg mb-3"
-                    />
-                    <p className="text-slate-300 text-sm text-center">Historical Stages Analysis</p>
-                  </div>
-                  <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
-                    <img
-                      src="dialectical-progression-class-conflict-framework.jpeg"
-                      alt="Class conflict framework mapping division of labor, property relations, and means of production"
-                      className="w-full h-auto rounded-lg mb-3"
-                    />
-                    <p className="text-slate-300 text-sm text-center">Class Conflict Framework</p>
-                  </div>
-                </div>
-              </div>
+        <!-- Side Panel - Concepts Evolution -->
+        <div class="lg:col-span-1 space-y-6">
+          <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
+            <div class="flex items-center gap-2 mb-4">
+              <svg class="w-5 h-5 text-cyan-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <h2 class="text-xl font-bold text-white">Conceptual Evolution</h2>
+            </div>
 
-              {/* Index Section */}
-              <div className="max-w-7xl mx-auto mt-12 mb-8 px-4">
-                <div className="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-8 shadow-xl">
-                  <h2 id="content-index" className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">
-                    Content Index
-                  </h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h3 className="text-xl font-bold text-cyan-400 mb-4">Historical Stages</h3>
-                      <ul className="space-y-2 text-slate-300">
-                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(5)}>
-                          <span className="text-cyan-400">⚡</span>
-                          <span>5. AI Era - Humans vs. Automation</span>
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(4)}>
-                          <span className="text-blue-400">🏭</span>
-                          <span>4. Capitalism - Bourgeoisie vs. Proletariat</span>
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(3)}>
-                          <span className="text-purple-400">🏰</span>
-                          <span>3. Feudalism - Aristocracy vs. Serfs</span>
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(2)}>
-                          <span className="text-red-400">⛓️</span>
-                          <span>2. Slave Society - Masters vs. Slaves</span>
-                        </li>
-                        <li className="flex items-center gap-3 hover:text-white transition-colors cursor-pointer" onClick={() => setActiveStage(1)}>
-                          <span className="text-amber-400">🔥</span>
-                          <span>1. Primitive Communism - Communal Society</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-purple-400 mb-4">Key Concepts</h3>
-                      <ul className="space-y-2 text-slate-300">
-                        <li className="flex items-start gap-3">
-                          <span className="text-cyan-400 font-bold">→</span>
-                          <span><strong>Division of Labor:</strong> Evolution from simple communal work to algorithmic automation</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-purple-400 font-bold">→</span>
-                          <span><strong>Property Relations:</strong> From communal ownership to data/platform capitalism</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-red-400 font-bold">→</span>
-                          <span><strong>Class Conflict:</strong> The driving force of historical change and transformation</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-amber-400 font-bold">→</span>
-                          <span><strong>Means of Production:</strong> Tools and systems that define each era</span>
-                        </li>
-                        <li className="flex items-start gap-3">
-                          <span className="text-yellow-400 font-bold">→</span>
-                          <span><strong>Dialectical Process:</strong> Thesis, antithesis, and synthesis throughout history</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                  
-                  {/* Footer Navigation */}
-                  <div className="mt-8 pt-6 border-t border-slate-700">
-                    <div className="flex flex-wrap justify-center gap-4 text-sm">
-                      <a href="#top" className="text-cyan-400 hover:text-cyan-300 transition-colors">↑ Back to Top</a>
-                      <span className="text-slate-600">|</span>
-                      <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" className="text-slate-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
-                      <span className="text-slate-600">|</span>
-                      <span className="text-slate-500">© 2026 Historical Dialectical Progression</span>
-                    </div>
-                  </div>
-                </div>
+            <div class="mb-6">
+              <h3 class="text-cyan-400 font-bold mb-3 text-sm tracking-wide">Division of Labor</h3>
+              <div class="space-y-2">
+                <div data-concept="1" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">1.</span>Simple communal</div>
+                <div data-concept="2" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">2.</span>Forced specialization</div>
+                <div data-concept="3" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">3.</span>Guild system</div>
+                <div data-concept="4" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">4.</span>Industrial complex</div>
+                <div data-concept="5" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">5.</span>Algorithmic automation</div>
               </div>
             </div>
-          );
+
+            <div class="mb-6">
+              <h3 class="text-cyan-400 font-bold mb-3 text-sm tracking-wide">Property Relations</h3>
+              <div class="space-y-2">
+                <div data-concept="1" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">1.</span>Communal</div>
+                <div data-concept="2" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">2.</span>Slave ownership</div>
+                <div data-concept="3" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">3.</span>Feudal tenure</div>
+                <div data-concept="4" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">4.</span>Private capital</div>
+                <div data-concept="5" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">5.</span>Data/Platform</div>
+              </div>
+            </div>
+
+            <div class="mb-0">
+              <h3 class="text-cyan-400 font-bold mb-3 text-sm tracking-wide">Means of Production</h3>
+              <div class="space-y-2">
+                <div data-concept="1" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">1.</span>Simple tools</div>
+                <div data-concept="2" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">2.</span>Agriculture</div>
+                <div data-concept="3" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">3.</span>Land + Guilds</div>
+                <div data-concept="4" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">4.</span>Factories</div>
+                <div data-concept="5" class="concept-row text-xs p-2 rounded bg-slate-700/50 text-slate-300 transition-all duration-300"><span class="font-mono text-slate-400 mr-2">5.</span>AI Systems</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-6 shadow-xl">
+            <h3 class="text-white font-bold mb-3 text-sm">Interactive Guide</h3>
+            <ul class="space-y-2 text-xs text-slate-300">
+              <li class="flex items-start gap-2"><span class="text-cyan-400 font-bold">→</span><span>Click stages to view detailed information</span></li>
+              <li class="flex items-start gap-2"><span class="text-purple-400 font-bold">→</span><span>Hover to highlight related concepts</span></li>
+              <li class="flex items-start gap-2"><span class="text-red-400 font-bold">→</span><span>Each transition driven by class conflict</span></li>
+              <li class="flex items-start gap-2"><span class="text-amber-400 font-bold">→</span><span>Stages interdependent and transformative</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Detail Modal -->
+      <div id="modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-fadeIn">
+        <div id="modal-card" class="bg-slate-800 rounded-2xl max-w-2xl w-full p-8 border border-slate-700 shadow-2xl">
+          <div class="flex justify-between items-start mb-6">
+            <div>
+              <h2 id="modal-name" class="text-3xl font-bold text-white mb-2"></h2>
+              <p id="modal-conflict" class="text-lg text-slate-300"></p>
+            </div>
+            <button id="modal-close" class="text-slate-400 hover:text-white transition-colors" aria-label="Close">
+              <svg class="w-6 h-6" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+          <div class="space-y-4 text-slate-300">
+            <p id="modal-desc" class="text-base leading-relaxed"></p>
+            <div class="grid grid-cols-1 gap-3 mt-6">
+              <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                <h4 class="text-cyan-400 font-bold text-sm mb-2">Means of Production</h4>
+                <p id="modal-production" class="text-sm"></p>
+              </div>
+              <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                <h4 class="text-purple-400 font-bold text-sm mb-2">Division of Labor</h4>
+                <p id="modal-labor" class="text-sm"></p>
+              </div>
+              <div class="bg-slate-900/50 p-4 rounded-lg border border-slate-700">
+                <h4 class="text-amber-400 font-bold text-sm mb-2">Property Relations</h4>
+                <p id="modal-property" class="text-sm"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historical Documentation Images -->
+      <div class="historical-docs max-w-7xl mx-auto mt-12 px-4">
+        <h2 class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">Historical Documentation</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
+            <img src="dialectical-progression-layers-overview.jpeg" alt="Layered diagram of the five stages with Thesis, Antithesis, Synthesis spiral" class="w-full h-auto rounded-lg mb-3">
+            <p class="text-slate-300 text-sm text-center">Dialectical Progression Overview</p>
+          </div>
+          <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
+            <img src="dialectical-progression-stages-arrow.jpeg" alt="Upward arrow showing the five historical stages from Primitive Communism to the AI Era" class="w-full h-auto rounded-lg mb-3">
+            <p class="text-slate-300 text-sm text-center">Historical Stages Analysis</p>
+          </div>
+          <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-4 shadow-xl hover:scale-105 focus-within:scale-105 transition-transform duration-300">
+            <img src="dialectical-progression-class-conflict-framework.jpeg" alt="Class conflict framework mapping division of labor, property relations, and means of production" class="w-full h-auto rounded-lg mb-3">
+            <p class="text-slate-300 text-sm text-center">Class Conflict Framework</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Index Section -->
+      <div class="max-w-7xl mx-auto mt-12 mb-8 px-4">
+        <div class="bg-slate-800/50 backdrop-blur border border-slate-700 rounded-xl p-8 shadow-xl">
+          <h2 id="content-index" class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-red-400 to-cyan-400 mb-6 text-center">Content Index</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h3 class="text-xl font-bold text-cyan-400 mb-4">Historical Stages</h3>
+              <ul class="space-y-2 text-slate-300">
+                <li data-stage="5" class="index-item flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><span class="text-cyan-400">⚡</span><span>5. AI Era - Humans vs. Automation</span></li>
+                <li data-stage="4" class="index-item flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><span class="text-blue-400">🏭</span><span>4. Capitalism - Bourgeoisie vs. Proletariat</span></li>
+                <li data-stage="3" class="index-item flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><span class="text-purple-400">🏰</span><span>3. Feudalism - Aristocracy vs. Serfs</span></li>
+                <li data-stage="2" class="index-item flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><span class="text-red-400">⛓️</span><span>2. Slave Society - Masters vs. Slaves</span></li>
+                <li data-stage="1" class="index-item flex items-center gap-3 hover:text-white transition-colors cursor-pointer"><span class="text-amber-400">🔥</span><span>1. Primitive Communism - Communal Society</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-purple-400 mb-4">Key Concepts</h3>
+              <ul class="space-y-2 text-slate-300">
+                <li class="flex items-start gap-3"><span class="text-cyan-400 font-bold">→</span><span><strong>Division of Labor:</strong> Evolution from simple communal work to algorithmic automation</span></li>
+                <li class="flex items-start gap-3"><span class="text-purple-400 font-bold">→</span><span><strong>Property Relations:</strong> From communal ownership to data/platform capitalism</span></li>
+                <li class="flex items-start gap-3"><span class="text-red-400 font-bold">→</span><span><strong>Class Conflict:</strong> The driving force of historical change and transformation</span></li>
+                <li class="flex items-start gap-3"><span class="text-amber-400 font-bold">→</span><span><strong>Means of Production:</strong> Tools and systems that define each era</span></li>
+                <li class="flex items-start gap-3"><span class="text-yellow-400 font-bold">→</span><span><strong>Dialectical Process:</strong> Thesis, antithesis, and synthesis throughout history</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Footer Navigation -->
+          <div class="mt-8 pt-6 border-t border-slate-700">
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+              <a href="#top" class="text-cyan-400 hover:text-cyan-300 transition-colors">↑ Back to Top</a>
+              <span class="text-slate-600">|</span>
+              <a href="ai-capitalism-and-the-left.html" class="text-slate-400 hover:text-white transition-colors">AI, Capitalism &amp; the Left</a>
+              <span class="text-slate-600">|</span>
+              <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" class="text-slate-400 hover:text-white transition-colors" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+              <span class="text-slate-600">|</span>
+              <span class="text-slate-500">© 2026 Historical Dialectical Progression</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Safelist holder for classes only applied dynamically via JS -->
+    <div class="hidden bg-white/20 text-white ring-4 ring-yellow-400 ring-white/30"></div>
+
+    <script>
+      (function () {
+        var stageData = {
+          5: { name: "AI ERA", conflict: "Humans vs. Automation", description: "Emerging tensions between human labor and autonomous systems. Algorithmic control of production.", production: "AI, Robotics, Algorithmic Control", labor: "Automated → Human oversight", property: "Data ownership, Platform capitalism" },
+          4: { name: "CAPITALISM", conflict: "Bourgeoisie vs. Proletariat", description: "Private ownership of means of production. Wage labor system. Capital accumulation.", production: "Factories, Machinery, Capital", labor: "Complex industrial division", property: "Private property, Concentrated wealth" },
+          3: { name: "FEUDALISM", conflict: "Aristocracy vs. Serfs", description: "Land-based economy. Hereditary aristocracy. Serfdom and manorial system.", production: "Land, Guild Workshops", labor: "Agricultural + Craft guilds", property: "Feudal land tenure" },
+          2: { name: "SLAVE SOCIETY", conflict: "Masters vs. Slaves", description: "Direct ownership of human beings as property. Forced labor extraction.", production: "Agricultural Tools, Workshops", labor: "Forced labor specialization", property: "Slave ownership, Land estates" },
+          1: { name: "PRIMITIVE COMMUNISM", conflict: "Communal / Egalitarian Society", description: "Classless society. Collective ownership. Subsistence production.", production: "Hunting, Gathering Tools", labor: "Simple, communal work", property: "Communal ownership" }
         };
 
-        // Render the component
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<MarxistMaterialismPyramid />);
+        var modal = document.getElementById('modal');
+        var modalCard = document.getElementById('modal-card');
+
+        function openModal(id) {
+          var d = stageData[id];
+          if (!d) return;
+          document.getElementById('modal-name').textContent = d.name;
+          document.getElementById('modal-conflict').textContent = d.conflict;
+          document.getElementById('modal-desc').textContent = d.description;
+          document.getElementById('modal-production').textContent = d.production;
+          document.getElementById('modal-labor').textContent = d.labor;
+          document.getElementById('modal-property').textContent = d.property;
+          modal.classList.remove('hidden');
+        }
+        function closeModal() { modal.classList.add('hidden'); }
+
+        document.getElementById('modal-close').addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+        modalCard.addEventListener('click', function (e) { e.stopPropagation(); });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeModal(); });
+
+        var conceptRows = Array.prototype.slice.call(document.querySelectorAll('.concept-row'));
+        function highlightConcepts(id, on) {
+          conceptRows.forEach(function (row) {
+            if (row.getAttribute('data-concept') === String(id)) {
+              row.classList.toggle('bg-white/20', on);
+              row.classList.toggle('text-white', on);
+              row.classList.toggle('bg-slate-700/50', !on);
+              row.classList.toggle('text-slate-300', !on);
+            }
+          });
+        }
+
+        Array.prototype.slice.call(document.querySelectorAll('.stage-block')).forEach(function (el) {
+          var id = el.getAttribute('data-stage');
+          var card = el.querySelector('.stage-card');
+          el.addEventListener('click', function () { openModal(id); });
+          el.addEventListener('mouseenter', function () { highlightConcepts(id, true); card.classList.add('ring-4', 'ring-white/30'); });
+          el.addEventListener('mouseleave', function () { highlightConcepts(id, false); card.classList.remove('ring-4', 'ring-white/30'); });
+        });
+
+        Array.prototype.slice.call(document.querySelectorAll('.index-item')).forEach(function (el) {
+          el.addEventListener('click', function () { openModal(el.getAttribute('data-stage')); });
+        });
+      })();
     </script>
 </body>
 </html>
