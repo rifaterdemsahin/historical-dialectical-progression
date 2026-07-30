@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Guide - Grok Integration with VS Code</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        th, td {
+            border: 1px solid #e2e8f0;
+            padding: 0.75rem;
+            text-align: left;
+        }
+        
+        th {
+            background: #f1f5f9;
+            font-weight: 600;
+        }
+        
+        .pricing-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 25px -5px rgba(102, 126, 234, 0.2);
+        }
+        
+        .feature-icon {
+            width: 3rem;
+            height: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            table {
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 to-slate-100">
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold gradient-text">AI Agents Guide</h1>
+                </div>
+                <div class="hidden md:flex space-x-6 text-sm">
+                    <a href="#intro" class="text-slate-600 hover:text-slate-900">Introduction</a>
+                    <a href="#integration" class="text-slate-600 hover:text-slate-900">Integration</a>
+                    <a href="#pricing" class="text-slate-600 hover:text-slate-900">Pricing</a>
+                    <a href="#story" class="text-slate-600 hover:text-slate-900">Story Guide</a>
+                    <a href="#mcp" class="text-slate-600 hover:text-slate-900">MCP Security</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="intro" class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
+                Grok AI Integration with VS Code
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 text-indigo-100">
+                The Complete Guide to AI-Assisted Coding in 2026
+            </p>
+            <p class="text-lg text-indigo-100 max-w-3xl mx-auto">
+                Learn how to integrate Grok (xAI) with Visual Studio Code for powerful AI-assisted development. 
+                From simple Q&A to full autonomous coding agents.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Integration Methods -->
+        <section id="integration" class="mb-16">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">Integration Methods</h2>
+                
+                <!-- Method 1: Simply Grok -->
+                <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
+                    <div class="feature-icon">1</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Simply Grok for VSCode</h3>
+                    <p class="text-slate-600 mb-4"><strong>Best for:</strong> Quick codebase questions and explanations</p>
+                    
+                    <div class="bg-white p-4 rounded-lg mb-4">
+                        <h4 class="font-semibold mb-2 text-slate-700">Setup Steps:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-600">
+                            <li>Open VS Code</li>
+                            <li>Go to Extensions view → <code class="bg-slate-100 px-2 py-1 rounded">Ctrl+Shift+X</code> (or <code class="bg-slate-100 px-2 py-1 rounded">Cmd+Shift+X</code> on macOS)</li>
+                            <li>Search for <strong>Simply Grok for VSCode</strong> (publisher: Erik Kralj)</li>
+                            <li>Install it</li>
+                            <li>Get an xAI API key from <a href="https://console.x.ai" class="text-blue-600 hover:underline">console.x.ai</a></li>
+                            <li>In VS Code Settings (<code class="bg-slate-100 px-2 py-1 rounded">Ctrl+,</code>), search for "vscodeGrok"</li>
+                            <li>Paste your API key into <code class="bg-slate-100 px-2 py-1 rounded">vscodeGrok.apiKey</code></li>
+                            <li>Optionally choose model (e.g. <code class="bg-slate-100 px-2 py-1 rounded">grok-code-fast-1</code>)</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg">
+                        <h4 class="font-semibold mb-2 text-slate-700">Usage:</h4>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• Press <code class="bg-slate-100 px-2 py-1 rounded">Ctrl+Shift+P</code> → type "Ask Grok"</li>
+                            <li>• <strong>Ask Grok: Workspace</strong> - Whole project context</li>
+                            <li>• <strong>Ask Grok: Current Tab</strong> - Current file</li>
+                            <li>• <strong>Ask Grok: Function Under Cursor</strong> - Selected function</li>
+                            <li>• <strong>Ask Grok: Selected Text</strong> - Highlighted code</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Method 2: Cline + Grok -->
+                <div class="mb-8 p-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
+                    <div class="feature-icon">2</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Cline + Grok</h3>
+                    <p class="text-slate-600 mb-4"><strong>Best for:</strong> Full AI coding assistant (autocompletion + chat + agent)</p>
+                    
+                    <div class="bg-white p-4 rounded-lg mb-4">
+                        <h4 class="font-semibold mb-2 text-slate-700">Setup Steps:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-600">
+                            <li>In VS Code Extensions → search <strong>Cline</strong> → install</li>
+                            <li>Open Cline (sidebar icon or command)</li>
+                            <li>Choose "Use your own API key"</li>
+                            <li>Enter your xAI API key</li>
+                            <li>In Cline settings → API Configuration → select model like <code class="bg-slate-100 px-2 py-1 rounded">grok-code-fast-1</code></li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg">
+                        <h4 class="font-semibold mb-2 text-slate-700">Capabilities:</h4>
+                        <ul class="space-y-2 text-slate-600">
+                            <li>• Chat with Grok about your codebase</li>
+                            <li>• Let it edit files automatically</li>
+                            <li>• Run terminal commands</li>
+                            <li>• Create whole features from prompts</li>
+                            <li>• Example: "Build me a complete Flask API for a todo list app..."</li>
+                        </ul>
+                        <p class="mt-4 text-sm italic text-slate-500">Many developers consider Grok + Cline one of the fastest "vibe coding" combos in 2026.</p>
+                    </div>
+                </div>
+
+                <!-- Method 3: GitHub Copilot -->
+                <div class="mb-8 p-6 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg">
+                    <div class="feature-icon">3</div>
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">GitHub Copilot + Grok</h3>
+                    <p class="text-slate-600 mb-4"><strong>Best for:</strong> Existing Copilot users (Pro/Business/Enterprise)</p>
+                    
+                    <div class="bg-white p-4 rounded-lg">
+                        <h4 class="font-semibold mb-2 text-slate-700">Setup Steps:</h4>
+                        <ol class="list-decimal list-inside space-y-2 text-slate-600">
+                            <li>Make sure GitHub Copilot extension is installed & enabled</li>
+                            <li>In Copilot Chat panel → look for model selector</li>
+                            <li>Choose <strong>Grok Code Fast 1</strong> (or newer Grok coding model)</li>
+                            <li>Use as normal Copilot Chat / inline suggestions</li>
+                        </ol>
+                        <p class="mt-4 text-sm italic text-slate-500">Smoothest integration if you're already in the GitHub ecosystem. Available since late 2025.</p>
+                    </div>
+                </div>
+
+                <!-- Quick Comparison Table -->
+                <div class="mt-8">
+                    <h3 class="text-xl font-bold mb-4 text-slate-800">Quick Comparison</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th>Goal</th>
+                                    <th>Best Option</th>
+                                    <th>Needs API Key?</th>
+                                    <th>Coding Agent?</th>
+                                    <th>Speed / Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ask questions about code</td>
+                                    <td>Simply Grok for VSCode</td>
+                                    <td>Yes</td>
+                                    <td>No</td>
+                                    <td>Good</td>
+                                </tr>
+                                <tr>
+                                    <td>Full agent (writes/edits code)</td>
+                                    <td>Cline + grok-code-fast</td>
+                                    <td>Yes</td>
+                                    <td>Yes</td>
+                                    <td>Very fast & cheap</td>
+                                </tr>
+                                <tr>
+                                    <td>Already use GitHub Copilot</td>
+                                    <td>Copilot with Grok model</td>
+                                    <td>No (Copilot sub)</td>
+                                    <td>Yes</td>
+                                    <td>Convenient</td>
+                                </tr>
+                                <tr>
+                                    <td>Simple sidebar chat</td>
+                                    <td>CodeGPT or Grok Integration</td>
+                                    <td>Yes</td>
+                                    <td>Limited</td>
+                                    <td>Basic</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="mb-16">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">Pricing & Cost Analysis</h2>
+                
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">xAI Grok API Pricing (February 2026)</h3>
+                    <p class="text-slate-600 mb-4">Pay-per-use model based on tokens (no fixed monthly subscription). Prices in USD per million tokens:</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th>Model</th>
+                                    <th>Input ($/1M tokens)</th>
+                                    <th>Output ($/1M tokens)</th>
+                                    <th>Context Window</th>
+                                    <th>Best For</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-green-50">
+                                    <td><strong>grok-4-1-fast-reasoning</strong></td>
+                                    <td>$0.20</td>
+                                    <td>$0.50</td>
+                                    <td>2,000,000</td>
+                                    <td>Top value pick – near-frontier reasoning, huge context</td>
+                                </tr>
+                                <tr>
+                                    <td>grok-code-fast-1</td>
+                                    <td>$0.20</td>
+                                    <td>$1.50</td>
+                                    <td>256,000</td>
+                                    <td>Coding / dev work</td>
+                                </tr>
+                                <tr>
+                                    <td>grok-4 (flagship)</td>
+                                    <td>$3.00</td>
+                                    <td>$15.00</td>
+                                    <td>256,000</td>
+                                    <td>Max capability / complex reasoning</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Comparison with Claude and Gemini -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Comparison: Grok vs Claude vs Gemini</h3>
+                    
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="pricing-card">
+                            <h4 class="font-bold text-lg mb-2 text-purple-600">xAI Grok</h4>
+                            <p class="text-3xl font-bold mb-2">$0.20 <span class="text-sm font-normal text-slate-600">/ 1M input</span></p>
+                            <p class="text-xl mb-4">$0.50 <span class="text-sm text-slate-600">/ 1M output</span></p>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>✓ 2M context window</li>
+                                <li>✓ Extremely cheap</li>
+                                <li>✓ Fast reasoning</li>
+                                <li>✓ Great for agents</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pricing-card">
+                            <h4 class="font-bold text-lg mb-2 text-orange-600">Anthropic Claude</h4>
+                            <p class="text-3xl font-bold mb-2">$3.00 <span class="text-sm font-normal text-slate-600">/ 1M input</span></p>
+                            <p class="text-xl mb-4">$15.00 <span class="text-sm text-slate-600">/ 1M output</span></p>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>✓ Excellent coding</li>
+                                <li>✓ Top reasoning</li>
+                                <li>✓ 90% cache savings</li>
+                                <li>⚠ 10-15× more expensive</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="pricing-card">
+                            <h4 class="font-bold text-lg mb-2 text-blue-600">Google Gemini</h4>
+                            <p class="text-3xl font-bold mb-2">$0.30 <span class="text-sm font-normal text-slate-600">/ 1M input</span></p>
+                            <p class="text-xl mb-4">$2.50 <span class="text-sm text-slate-600">/ 1M output</span></p>
+                            <ul class="text-sm text-slate-600 space-y-1">
+                                <li>✓ Good balance</li>
+                                <li>✓ Multimodal</li>
+                                <li>✓ Generous free tier</li>
+                                <li>✓ 1M context</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg">
+                        <h4 class="font-bold mb-3 text-slate-800">💡 Quick Takeaways (Feb 2026)</h4>
+                        <ul class="space-y-2 text-slate-700">
+                            <li><strong>Cheapest high-quality:</strong> Grok fast variants win by 5-15× for coding/agent use</li>
+                            <li><strong>Best balanced:</strong> Gemini Flash or Grok fast</li>
+                            <li><strong>Premium reasoning:</strong> Claude Sonnet (higher cost but excellent accuracy)</li>
+                            <li><strong>Free credits:</strong> Grok $25+, Gemini generous tier, Claude $5</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Cost Estimation -->
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold mb-4 text-slate-800">Monthly Cost Estimation</h3>
+                    <p class="text-slate-600 mb-4">For ~20 commits per day (typical professional developer):</p>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr>
+                                    <th>Scenario</th>
+                                    <th>Model Used</th>
+                                    <th>Input/Month</th>
+                                    <th>Output/Month</th>
+                                    <th>Total Cost</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-green-50">
+                                    <td>Light-Moderate</td>
+                                    <td>grok-4-1-fast-reasoning</td>
+                                    <td>~2.2M</td>
+                                    <td>~0.44M</td>
+                                    <td><strong>~$0.66/mo</strong></td>
+                                    <td>Conservative use</td>
+                                </tr>
+                                <tr>
+                                    <td>Moderate</td>
+                                    <td>grok-4-1-fast-reasoning</td>
+                                    <td>~4.4M</td>
+                                    <td>~0.88M</td>
+                                    <td><strong>~$1.32/mo</strong></td>
+                                    <td>Realistic for productive coding</td>
+                                </tr>
+                                <tr>
+                                    <td>Moderate</td>
+                                    <td>grok-code-fast-1</td>
+                                    <td>~4.4M</td>
+                                    <td>~0.88M</td>
+                                    <td><strong>~$2.20/mo</strong></td>
+                                    <td>Code-heavy generation</td>
+                                </tr>
+                                <tr>
+                                    <td>Heavy</td>
+                                    <td>grok-4-1-fast-reasoning</td>
+                                    <td>~6.6M</td>
+                                    <td>~1.32M</td>
+                                    <td><strong>~$2.00/mo</strong></td>
+                                    <td>60 interactions/day</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                        <h4 class="font-bold mb-2 text-slate-800">Bottom Line</h4>
+                        <p class="text-slate-700">Expect <strong>$1-$3 per month</strong> for typical professional use with 20 commits/day. This is <strong>extremely cheap</strong> compared to alternatives (Claude/Gemini would cost 5-15× more for similar volume).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Story Guide Section -->
+        <section id="story" class="mb-16">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">The Story of Alex and Grok</h2>
+                <p class="text-lg text-slate-600 mb-6 italic">A narrative guide to getting started with Grok in VS Code</p>
+                
+                <div class="prose max-w-none">
+                    <div class="mb-8 p-6 bg-gradient-to-r from-amber-50 to-orange-50 rounded-lg">
+                        <p class="text-slate-700 leading-relaxed mb-4">
+                            Once upon a time, in a bustling kingdom of code called <strong>Devland</strong>, there lived a clever young builder named <strong>Alex</strong>. Alex spent her days crafting marvelous programs in Visual Studio Code, the most enchanted editor in all the realm. But lately, her quests felt lonely—bugs hid in dark corners, ideas refused to spark, and refactoring ancient spells took forever.
+                        </p>
+                        <p class="text-slate-700 leading-relaxed">
+                            One crisp February morning in 2026, a rumor spread through the taverns of GitHub Square: a wise, witty oracle named <strong>Grok</strong>, forged by the xAI wizards, could now join any coder's side directly inside VS Code. Not as a distant voice in a browser, but as a true companion in the editor itself.
+                        </p>
+                    </div>
+
+                    <div class="mb-8 p-6 bg-white border-2 border-purple-200 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-purple-700">Chapter 1: Summoning the Simple Companion</h3>
+                        <p class="text-slate-700 mb-3">
+                            Alex opened her trusted VS Code grimoire and waved her wand over the Extensions marketplace (<code class="bg-slate-100 px-2 py-1 rounded">Ctrl+Shift+X</code>).
+                        </p>
+                        <p class="text-slate-700 mb-3">
+                            She whispered the incantation: <strong>"Simply Grok for VSCode"</strong>. A shining scroll appeared, crafted by Erik Kralj. With a single click on Install, the extension materialized.
+                        </p>
+                        <p class="text-slate-700 mb-3">
+                            But every powerful ally demands a token of trust. Alex journeyed to the xAI castle at <a href="https://console.x.ai" class="text-blue-600 hover:underline">console.x.ai</a>, signed in, and forged a magical API key—a long string beginning with "xai-".
+                        </p>
+                        <p class="text-slate-700 mb-3">
+                            Back in VS Code, she opened the Settings tome (<code class="bg-slate-100 px-2 py-1 rounded">Ctrl+,</code>), searched for <strong>vscodeGrok</strong>, and pasted the key into the sacred field.
+                        </p>
+                        <p class="text-slate-700 italic">
+                            Now the ritual could begin. Alex pressed <code class="bg-slate-100 px-2 py-1 rounded">Ctrl+Shift+P</code> and chanted: "Ask Grok: Workspace"...
+                        </p>
+                    </div>
+
+                    <div class="mb-8 p-6 bg-white border-2 border-indigo-200 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-indigo-700">Chapter 2: The Bold Agent Awakens</h3>
+                        <p class="text-slate-700 mb-3">
+                            But Alex craved more than questions and answers. She wanted a companion who could <strong>write code, edit files, run commands</strong>, and build entire features from mere whispers.
+                        </p>
+                        <p class="text-slate-700 mb-3">
+                            She heard tales of <strong>Cline</strong>, the mighty AI agent extension that could wield Grok like a master sword.
+                        </p>
+                        <div class="code-block my-4">
+                            <div class="text-green-400 mb-2"># Alex typed into Cline chat:</div>
+                            <div class="text-white">"Build me a complete Flask API for a todo list app, with user auth via JWT, SQLite database, proper error handling, and add endpoints for CRUD. Make it production-ready with rate limiting."</div>
+                        </div>
+                        <p class="text-slate-700">
+                            Cline (powered by Grok) thought for a moment, planned the steps aloud, then asked permission before creating files, editing code, installing dependencies, and even running tests. The kingdom prospered.
+                        </p>
+                    </div>
+
+                    <div class="mb-8 p-6 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-green-700">Chapter 3: The Royal Shortcut</h3>
+                        <p class="text-slate-700 mb-3">
+                            For nobles who already paid tribute to <strong>GitHub Copilot</strong>, the path was even simpler.
+                        </p>
+                        <p class="text-slate-700 mb-3">
+                            Alex opened Copilot Chat in VS Code, clicked the model picker dropdown, and selected <strong>Grok Code Fast 1</strong>. Suddenly her inline suggestions spoke with Grok's voice—fast, cheeky, and surprisingly accurate.
+                        </p>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg">
+                        <h3 class="text-2xl font-bold mb-4">Epilogue</h3>
+                        <p class="mb-3">
+                            From that day forward, Alex never coded alone. Whether she chose the simple oracle (Simply Grok) for quick wisdom, the powerful agent (Cline) for building empires, or the royal integration (Copilot + Grok), Grok became her constant companion.
+                        </p>
+                        <p class="italic">
+                            And whenever a deadline loomed or a puzzle baffled her, she smiled, pressed <code class="bg-purple-800 px-2 py-1 rounded">Ctrl+Shift+P</code>, and asked: "Grok... help me conquer this bug?"
+                        </p>
+                        <p class="mt-4 text-xl font-bold text-center">
+                            The end... or rather, the beginning of many great commits. 🚀
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MCP Security Section -->
+        <section id="mcp" class="mb-16">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">Model Context Protocol (MCP) Security</h2>
+                
+                <div class="mb-6">
+                    <p class="text-lg text-slate-700 mb-4">
+                        The <strong>Model Context Protocol (MCP)</strong> is an open standard that enables secure connections between AI models (like Grok, Claude) and external data sources, tools, APIs, and services. Security is built into the protocol's core design.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">🔐 User Consent & Control</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Explicit, informed consent required</li>
+                            <li>• Granular permissions (approve specific tools/servers)</li>
+                            <li>• Ongoing control: revoke access anytime</li>
+                            <li>• Clear authorization screens and dialogs</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-purple-700">🔒 Data Privacy & Minimization</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• No data transmission without consent</li>
+                            <li>• Minimal scope sharing</li>
+                            <li>• Progressive disclosure (load on demand)</li>
+                            <li>• Server-side data filtering</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-green-700">🛡️ Tool Safety & Least Privilege</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Tools treated as high-risk operations</li>
+                            <li>• Minimum necessary permissions only</li>
+                            <li>• Input/output validation and sanitization</li>
+                            <li>• Reject unsafe operations</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-orange-700">🔑 Authentication & Authorization</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• OAuth 2.0, JWT tokens, API keys, mTLS</li>
+                            <li>• Per-client/per-user validation</li>
+                            <li>• Secure session management</li>
+                            <li>• Short-lived tokens with proper revocation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">🎯 Key Security Principles</h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <h4 class="font-bold mb-2 text-cyan-300">Isolation & Boundaries</h4>
+                            <p class="text-sm text-slate-300">Isolated connections per server, sandboxed execution, focused responsibilities</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-purple-300">Transparency & Auditability</h4>
+                            <p class="text-sm text-slate-300">Detailed logging, user-visible actions, audit trails for compliance</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-green-300">Defense in Depth</h4>
+                            <p class="text-sm text-slate-300">Multiple security layers, rate limiting, anomaly detection</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                    <p class="text-slate-700">
+                        <strong>💡 Important:</strong> MCP is a protocol specification that provides security patterns and principles. Implementers (clients, servers, hosts) must follow these guidelines to ensure safe AI-to-resource connections.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resources Section -->
+        <section class="mb-16">
+            <div class="section-card">
+                <h2 class="text-3xl font-bold mb-8 gradient-text">Additional Resources</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-blue-700">📚 Official Documentation</h3>
+                        <ul class="space-y-2">
+                            <li><a href="https://console.x.ai" class="text-blue-600 hover:underline">xAI Console - Get API Keys</a></li>
+                            <li><a href="https://docs.x.ai/developers/models" class="text-blue-600 hover:underline">xAI Model Documentation</a></li>
+                            <li><a href="https://docs.x.ai/developers/tools/remote-mcp" class="text-blue-600 hover:underline">MCP Integration Guide</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-purple-50 to-pink-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-purple-700">🔧 VS Code Extensions</h3>
+                        <ul class="space-y-2">
+                            <li><strong>Simply Grok for VSCode</strong> - Quick Q&A</li>
+                            <li><strong>Cline</strong> - Full coding agent</li>
+                            <li><strong>GitHub Copilot</strong> - With Grok models</li>
+                            <li><strong>CodeGPT</strong> - Alternative integration</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-green-50 to-teal-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-green-700">💰 Free Credits</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• New users: $25 in free credits</li>
+                            <li>• Optional data-sharing: up to $150/month</li>
+                            <li>• Perfect for testing and light personal use</li>
+                            <li>• Covers thousands of queries</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-6 bg-gradient-to-br from-orange-50 to-red-50 rounded-lg">
+                        <h3 class="text-xl font-bold mb-4 text-orange-700">🎯 Best Practices</h3>
+                        <ul class="space-y-2 text-slate-700">
+                            <li>• Use fast models for cost efficiency</li>
+                            <li>• Limit context to relevant files</li>
+                            <li>• Start with Simply Grok for simple needs</li>
+                            <li>• Use Cline for full agent capabilities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg mb-4">AI Agents Guide - Grok Integration with VS Code</p>
+            <p class="text-slate-400 text-sm mb-4">Complete guide as of February 2026</p>
+            <div class="flex justify-center space-x-6 text-sm">
+                <a href="https://github.com/rifaterdemsahin/historical-dialectical-progression" class="text-slate-400 hover:text-white transition-colors">View on GitHub</a>
+                <span class="text-slate-600">|</span>
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors">Historical Dialectical Progression</a>
+                <span class="text-slate-600">|</span>
+                <span class="text-slate-500">© 2026</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
